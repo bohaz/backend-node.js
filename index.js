@@ -18,9 +18,11 @@ mongoose
 
 // Importar rutas
 const petsRoutes = require("./routes/pets");
+const authRoutes = require("./routes/auth");
 
 // Usar rutas
 app.use("/api/pets", petsRoutes);
+app.use("/api/auth", authRoutes);
 
 // Ruta raíz
 app.get("/", (req, res) => {
