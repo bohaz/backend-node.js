@@ -25,6 +25,27 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Actualizar una mascota
+router.put("/:id", async (req, res) => {
+  const { name, species } = req.body;
+
+  try {
+    const updatedPet = await Pet.findByIdAndUpdate(
+      req.params.id,
+      { name, species },
+      { new: true, runValidators: true } // Devuelve el documento actualizado y valida los cambios
+    );
+
+    if (!updatedPet) {
+      return res.status(404).json({ message: "Mascota no encontrada" });
+    }
+
+    res.json(updatedPet);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 // Eliminar una mascota
 router.delete("/:id", async (req, res) => {
   try {
