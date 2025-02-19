@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import Pet from "../models/Pet.mjs";
+
 const router = express.Router();
-const Pet = require("../models/Pet");
 
 // Obtener todas las mascotas
 router.get("/", async (req, res) => {
@@ -34,4 +35,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
